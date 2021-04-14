@@ -7,14 +7,18 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {AuthModule} from 'src/app/auth/auth.module';
 import {environment} from 'src/environments/environment';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {EffectsModule} from '@ngrx/effects';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     AuthModule,
     StoreModule.forRoot({}),
+    EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Количество actions, которые мы хотим показывать в нашем devtools.
       logOnly: environment.production,
