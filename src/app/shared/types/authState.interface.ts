@@ -4,6 +4,7 @@ import {BackendErrorsInterface} from 'src/app/shared/types/backendErrors.interfa
 
 export interface AuthStateInterface {
   isSubmitting: boolean;
+  isLoading: boolean;
   currentUser: CurrentUserInterface | null;
   isLoggedIn: boolean | null;
   validationErrors: BackendErrorsInterface | null;
