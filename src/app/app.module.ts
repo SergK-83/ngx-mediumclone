@@ -9,6 +9,7 @@ import {AuthModule} from 'src/app/auth/auth.module';
 import {environment} from 'src/environments/environment';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {EffectsModule} from '@ngrx/effects';
+import {TopBarModule} from './shared/modules/topBar/topBar.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,6 +18,7 @@ import {EffectsModule} from '@ngrx/effects';
     AppRoutingModule,
     HttpClientModule,
     AuthModule,
+    TopBarModule,
     StoreModule.forRoot({}),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({
