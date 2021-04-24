@@ -6,14 +6,17 @@ import {EffectsModule} from '@ngrx/effects';
 import {GetFeedEffect} from './store/effects/getFeed.effect';
 import {reducers} from './store/reducers';
 import {FeedService} from './services/feed.service';
+import {RouterModule} from '@angular/router';
+import {UserAvatarDefaultDirective} from '../../directives/user-avatar-default.directive';
 
 @NgModule({
   imports: [
     CommonModule,
     StoreModule.forFeature('feed', reducers),
-    EffectsModule.forFeature([GetFeedEffect])
+    EffectsModule.forFeature([GetFeedEffect]),
+    RouterModule
   ],
-  declarations: [FeedComponent],
+  declarations: [FeedComponent, UserAvatarDefaultDirective],
   exports: [FeedComponent],
   providers: [FeedService]
 })
