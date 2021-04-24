@@ -8,13 +8,17 @@ import {reducers} from './store/reducers';
 import {FeedService} from './services/feed.service';
 import {RouterModule} from '@angular/router';
 import {UserAvatarDefaultDirective} from '../../directives/user-avatar-default.directive';
+import {ErrorMessageModule} from '../errorMessage/errorMessage.module';
+import {LoadingModule} from '../loading/loading.module';
 
 @NgModule({
   imports: [
     CommonModule,
     StoreModule.forFeature('feed', reducers),
     EffectsModule.forFeature([GetFeedEffect]),
-    RouterModule
+    RouterModule,
+    ErrorMessageModule,
+    LoadingModule
   ],
   declarations: [FeedComponent, UserAvatarDefaultDirective],
   exports: [FeedComponent],
