@@ -13,6 +13,7 @@ import {TopBarModule} from './shared/modules/topBar/topBar.module';
 import {PersistanceService} from './shared/serveces/persistance.service';
 import {AuthInterceptor} from './shared/serveces/authinterceptor.service';
 import {GlobalFeedModule} from './globalFeed/globalFeed.module';
+import {routerReducer, StoreRouterConnectingModule} from '@ngrx/router-store';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,12 +24,15 @@ import {GlobalFeedModule} from './globalFeed/globalFeed.module';
     AuthModule,
     TopBarModule,
     GlobalFeedModule,
-    StoreModule.forRoot({}),
+    StoreModule.forRoot({
+      router: routerReducer
+    }),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Количество actions, которые мы хотим показывать в нашем devtools.
       logOnly: environment.production,
     }),
+    StoreRouterConnectingModule.forRoot()
   ],
   providers: [
     PersistanceService,

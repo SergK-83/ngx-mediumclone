@@ -6,6 +6,7 @@ import {GetFeedResponseInterface} from '../types/getFeedResponse.interface';
 import {errorSelector, feedSelector, isLoadingSelector} from '../store/selectors';
 import {environment} from '../../../../../environments/environment';
 import {ActivatedRoute, Params, Router} from '@angular/router';
+import {parseUrl, stringify} from 'query-string';
 
 @Component({
   selector: 'mc-feed',
@@ -31,7 +32,6 @@ export class FeedComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.initializeValues();
-    this.fetchData();
     this.initializeListeners();
   }
 
@@ -40,9 +40,10 @@ export class FeedComponent implements OnInit, OnDestroy {
   }
 
   initializeListeners(): void {
+    // если мы пишем .subscribe(), то потом от этой подписки необходимо отписасться ( router angular автоматически отписывает все подписки )
     this.queryParamsSubscription = this.route.queryParams.subscribe((params: Params) => {
-      console.log('params', params);
-      this.currentPage = Number(params.pag || '1');
+      this.currentPage = Number(params.page || '1');
+      this.fetchFeed();
     });
   }
 
@@ -53,7 +54,16 @@ export class FeedComponent implements OnInit, OnDestroy {
     this.baseUrl = this.router.url.split('?')[0];
   }
 
-  fetchData(): void {
-    this.store.dispatch(getFeedAction({url: this.apiUrlProps}));
+  fetchFeed(): void {
+    const offset = this.currentPage * this.limit - this.limit;
+    const parsedUrl = parseUrl(this.apiUrlProps);
+    const stringifiedParams = stringify({
+      limit: this.limit,
+      offset,
+      ...parsedUrl.query
+    });
+    const apiUrlWithParams = `${parsedUrl.url}?${stringifiedParams}`;
+
+    this.store.dispatch(getFeedAction({url: apiUrlWithParams}));
   }
 }

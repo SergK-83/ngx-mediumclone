@@ -10,6 +10,7 @@ import {RouterModule} from '@angular/router';
 import {UserAvatarDefaultDirective} from '../../directives/user-avatar-default.directive';
 import {ErrorMessageModule} from '../errorMessage/errorMessage.module';
 import {LoadingModule} from '../loading/loading.module';
+import {PaginationModule} from '../pagination/pagination.module';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import {LoadingModule} from '../loading/loading.module';
     EffectsModule.forFeature([GetFeedEffect]),
     RouterModule,
     ErrorMessageModule,
-    LoadingModule
+    LoadingModule,
+    PaginationModule
   ],
   declarations: [FeedComponent, UserAvatarDefaultDirective],
   exports: [FeedComponent],
