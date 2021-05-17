@@ -9,6 +9,7 @@ import {
 import {catchError, map, switchMap} from 'rxjs/operators';
 import {GetPopularTagResponseInterface} from '../../types/getPopularTagResponse.interface';
 import {of} from 'rxjs';
+import {PopularTagType} from '../../../../types/popularTag.type';
 
 @Injectable()
 export class GetPopularTagsEffect {
@@ -20,7 +21,7 @@ export class GetPopularTagsEffect {
       ofType(getPopularTagsAction),
       switchMap(() => {
         return this.popularTagsService.getPopularTags().pipe(
-          map( (popularTags: GetPopularTagResponseInterface) => {
+          map( (popularTags: PopularTagType[]) => {
             return getPopularTagsSuccessAction({popularTags});
           }),
           catchError(() => {

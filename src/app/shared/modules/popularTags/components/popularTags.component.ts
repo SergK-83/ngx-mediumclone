@@ -4,6 +4,7 @@ import {select, Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
 import {errorSelector, isLoadingSelector, popularTagsSelector} from '../store/selectors';
 import {getPopularTagsAction} from '../store/actions/getPopularTags.actions';
+import {PopularTagType} from '../../../types/popularTag.type';
 
 @Component({
   selector: 'mc-popular-tags',
@@ -12,7 +13,7 @@ import {getPopularTagsAction} from '../store/actions/getPopularTags.actions';
 export class PopularTagsComponent implements OnInit {
   isLoading: Observable<boolean>;
   error$: Observable<string | null>;
-  popularTags$: Observable<GetPopularTagResponseInterface | null>;
+  popularTags$: Observable<PopularTagType[] | null>;
 
   constructor(
     private store: Store

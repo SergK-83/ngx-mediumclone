@@ -3,6 +3,7 @@ import {AppStateInterface} from '../../../types/appState.interface';
 import {PopularTagsStateInterface} from '../types/popularTagsState.interface';
 
 export const popularTagsFeatureSelector = createFeatureSelector<
+  AppStateInterface,
   PopularTagsStateInterface
   >('popularTags');
 
