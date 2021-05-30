@@ -11,7 +11,7 @@ import {PopularTagType} from '../../../types/popularTag.type';
   templateUrl: './popularTags.component.html'
 })
 export class PopularTagsComponent implements OnInit {
-  isLoading: Observable<boolean>;
+  isLoading$: Observable<boolean>;
   error$: Observable<string | null>;
   popularTags$: Observable<PopularTagType[] | null>;
 
@@ -25,7 +25,7 @@ export class PopularTagsComponent implements OnInit {
   }
 
   initializeValues(): void {
-    this.isLoading = this.store.pipe(select(isLoadingSelector));
+    this.isLoading$ = this.store.pipe(select(isLoadingSelector));
     this.error$ = this.store.pipe(select(errorSelector));
     this.popularTags$ = this.store.pipe(select(popularTagsSelector));
   }

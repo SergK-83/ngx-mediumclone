@@ -1,5 +1,5 @@
 export enum ActionTypes {
-  GET_TAGS = '[TAGS] Get tags',
-  GET_TAGS_SUCCESS = '[TAGS] Get tags success',
-  GET_TAGS_FAILURE = '[TAGS] Get tags failure',
+  GET_POPULAR_TAGS = '[PopularTags] Get popular tags',
+  GET_POPULAR_TAGS_SUCCESS = '[PopularTags] Get popular tags success',
+  GET_POPULAR_TAGS_FAILURE = '[PopularTags] Get popular tags failure',
 }
