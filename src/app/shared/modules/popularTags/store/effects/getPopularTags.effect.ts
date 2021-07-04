@@ -7,7 +7,6 @@ import {
   getPopularTagsSuccessAction
 } from '../actions/getPopularTags.actions';
 import {catchError, map, switchMap} from 'rxjs/operators';
-import {GetPopularTagResponseInterface} from '../../types/getPopularTagResponse.interface';
 import {of} from 'rxjs';
 import {PopularTagType} from '../../../../types/popularTag.type';
 

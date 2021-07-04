@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {GetPopularTagResponseInterface} from '../types/getPopularTagResponse.interface';
 import {select, Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
 import {errorSelector, isLoadingSelector, popularTagsSelector} from '../store/selectors';
