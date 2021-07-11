@@ -14,7 +14,6 @@ export class TagFeedComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
-      console.log('params in tagFeed', params);
 
       // this.tagName = this.route.snapshot.paramMap.get('slug');
       this.tagName = params.slug;
