@@ -10,12 +10,13 @@ import {environment} from 'src/environments/environment';
 import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 import {EffectsModule} from '@ngrx/effects';
 import {TopBarModule} from './shared/modules/topBar/topBar.module';
-import {PersistanceService} from './shared/serveces/persistance.service';
-import {AuthInterceptor} from './shared/serveces/authinterceptor.service';
+import {PersistanceService} from './shared/services/persistance.service';
+import {AuthInterceptor} from './shared/services/authinterceptor.service';
 import {GlobalFeedModule} from './globalFeed/globalFeed.module';
 import {routerReducer, StoreRouterConnectingModule} from '@ngrx/router-store';
 import {YourFeedModule} from './yourFeed/yourFeed.module';
 import {TagFeedModule} from './tagFeed/tagFeed.module';
+import {ArticleModule} from './article/article.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -28,6 +29,7 @@ import {TagFeedModule} from './tagFeed/tagFeed.module';
     GlobalFeedModule,
     YourFeedModule,
     TagFeedModule,
+    ArticleModule,
     StoreModule.forRoot({
       router: routerReducer
     }),

@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {UtilsService} from '../../serveces/utils.service';
+import {UtilsService} from '../../services/utils.service';
 
 @Component({
   selector: 'mc-pagination',

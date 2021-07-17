@@ -8,7 +8,7 @@ import {
 import {catchError, map, switchMap} from 'rxjs/operators';
 import {AuthService} from '../../services/auth.service';
 import {CurrentUserInterface} from '../../../shared/types/currentUser.interface';
-import {PersistanceService} from '../../../shared/serveces/persistance.service';
+import {PersistanceService} from '../../../shared/services/persistance.service';
 import {of} from 'rxjs';
 
 @Injectable()
