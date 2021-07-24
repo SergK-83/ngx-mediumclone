@@ -4,15 +4,20 @@ import {getArticleAction} from '../../store/actions/getArticle.action';
 import {ActivatedRoute} from '@angular/router';
 import {ArticleInterface} from '../../../shared/types/article.interface';
 import {combineLatest, Observable, Subscription} from 'rxjs';
-import {articleSelector, errorSelector, isLoadingSelector} from '../../store/selectors';
+import {
+  articleSelector,
+  errorSelector,
+  isLoadingSelector,
+} from '../../store/selectors';
 import {currentUserSelector} from '../../../auth/store/selectors';
 import {map} from 'rxjs/operators';
 import {CurrentUserInterface} from '../../../shared/types/currentUser.interface';
+import {deleteArticleAction} from 'src/app/article/store/actions/deleteArticle.action ';
 
 @Component({
   selector: 'mc-article',
   templateUrl: './article.component.html',
-  styleUrls: ['./article.component.scss']
+  styleUrls: ['./article.component.scss'],
 })
 export class ArticleComponent implements OnInit, OnDestroy {
   slug: string;
@@ -22,12 +27,11 @@ export class ArticleComponent implements OnInit, OnDestroy {
   error$: Observable<string | null>;
   isAuthor$: Observable<boolean>;
 
-  constructor(private store: Store, private route: ActivatedRoute) {
-  }
+  constructor(private store: Store, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.initializeValues();
-    this.initializeListeners()
+    this.initializeListeners();
     this.fetchData();
   }
 
@@ -67,5 +71,9 @@ export class ArticleComponent implements OnInit, OnDestroy {
 
   fetchData(): void {
     this.store.dispatch(getArticleAction({slug: this.slug}));
+  }
+
+  deleteArticle(): void {
+    this.store.dispatch(deleteArticleAction({slug: this.slug}));
   }
 }

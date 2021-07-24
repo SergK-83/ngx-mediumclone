@@ -10,9 +10,9 @@ import {FeedTogglerModule} from '../shared/modules/feedToggler/feedToggler.modul
 const routes: Routes = [
   {
     path: 'tags/:slug',
-    component: TagFeedComponent
-  }
-]
+    component: TagFeedComponent,
+  },
+];
 
 @NgModule({
   imports: [
@@ -21,8 +21,8 @@ const routes: Routes = [
     FeedModule,
     BannerModule,
     PopularTagsModule,
-    FeedTogglerModule
+    FeedTogglerModule,
   ],
-  declarations: [TagFeedComponent]
+  declarations: [TagFeedComponent],
 })
 export class TagFeedModule {}

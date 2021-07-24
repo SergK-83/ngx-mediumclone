@@ -1,6 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {BackendErrorsInterface} from 'src/app/shared/types/backendErrors.interface';
-import {Observable} from 'rxjs';
 
 @Component({
   selector: 'mc-backend-error-messages',
