@@ -7,7 +7,11 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {AuthModule} from 'src/app/auth/auth.module';
 import {environment} from 'src/environments/environment';
-import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
+import {
+  HTTP_INTERCEPTORS,
+  HttpClient,
+  HttpClientModule,
+} from '@angular/common/http';
 import {EffectsModule} from '@ngrx/effects';
 import {TopBarModule} from './shared/modules/topBar/topBar.module';
 import {PersistanceService} from './shared/services/persistance.service';
@@ -17,6 +21,7 @@ import {routerReducer, StoreRouterConnectingModule} from '@ngrx/router-store';
 import {YourFeedModule} from './yourFeed/yourFeed.module';
 import {TagFeedModule} from './tagFeed/tagFeed.module';
 import {ArticleModule} from './article/article.module';
+import {CreateArticleModule} from 'src/app/createArticle/createArticle.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -29,24 +34,25 @@ import {ArticleModule} from './article/article.module';
     GlobalFeedModule,
     YourFeedModule,
     TagFeedModule,
+    CreateArticleModule,
     ArticleModule,
     StoreModule.forRoot({
-      router: routerReducer
+      router: routerReducer,
     }),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Количество actions, которые мы хотим показывать в нашем devtools.
       logOnly: environment.production,
     }),
-    StoreRouterConnectingModule.forRoot()
+    StoreRouterConnectingModule.forRoot(),
   ],
   providers: [
     PersistanceService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
-      multi: true
-    }
+      multi: true,
+    },
   ],
   bootstrap: [AppComponent],
 })
