@@ -3,6 +3,7 @@ import {FeedStateInterface} from '../modules/feed/types/feedState.interface';
 import {PopularTagsStateInterface} from '../modules/popularTags/types/popularTagsState.interface';
 import {ArticleInterface} from './article.interface';
 import {CreateArticleStateInterface} from 'src/app/createArticle/types/createArticleState.interface';
+import {EditArticleStateInterface} from 'src/app/editArticle/types/editArticleState.interface';
 
 // Данный интерфейс будет нам показывать все состояние приложения
 export interface AppStateInterface {
@@ -11,4 +12,5 @@ export interface AppStateInterface {
   popularTags: PopularTagsStateInterface;
   article: ArticleInterface;
   createArticle: CreateArticleStateInterface;
+  editArticle: EditArticleStateInterface;
 }

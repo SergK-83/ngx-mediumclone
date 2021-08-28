@@ -7,6 +7,6 @@ export class UtilsService {
     // Реализовать вывод пагинации по 10 страниц
     // TODO END
 
-    return [...Array(end).keys()].map(el => el + start);
+    return [...Array(end).keys()].map((el) => el + start);
   }
 }
