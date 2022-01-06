@@ -4,6 +4,7 @@ import {PopularTagsStateInterface} from '../modules/popularTags/types/popularTag
 import {ArticleInterface} from './article.interface';
 import {CreateArticleStateInterface} from 'src/app/createArticle/types/createArticleState.interface';
 import {EditArticleStateInterface} from 'src/app/editArticle/types/editArticleState.interface';
+import {SettingsStateInterface} from 'src/app/settings/types/settingsState.interface';
 
 // Данный интерфейс будет нам показывать все состояние приложения
 export interface AppStateInterface {
@@ -13,4 +14,5 @@ export interface AppStateInterface {
   article: ArticleInterface;
   createArticle: CreateArticleStateInterface;
   editArticle: EditArticleStateInterface;
+  settings: SettingsStateInterface;
 }
