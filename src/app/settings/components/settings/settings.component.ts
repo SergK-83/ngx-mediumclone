@@ -9,6 +9,8 @@ import {filter} from 'rxjs/operators';
 import {BackendErrorsInterface} from 'src/app/shared/types/backendErrors.interface';
 import {isSubmittingSelector} from 'src/app/settings/store/selectors';
 import {updateCurrentUserAction} from 'src/app/auth/store/actions/updateCurrentUser.action';
+import {CurrentUserInputInterface} from 'src/app/shared/types/currentUserInput.interface';
+import {logoutAction} from 'src/app/auth/store/actions/sync.action';
 
 @Component({
   selector: 'mc-settings',
@@ -57,7 +59,15 @@ export class SettingsComponent implements OnInit, OnDestroy {
     });
   }
 
-  // submit(): void {
-  //   this.store.dispatch(updateCurrentUserAction({currentUserInput}))
-  // }
+  submit(): void {
+    const currentUserInput: CurrentUserInputInterface = {
+      ...this.currentUser,
+      ...this.form.value
+    };
+    this.store.dispatch(updateCurrentUserAction({currentUserInput}));
+  }
+
+  logout(): void {
+    this.store.dispatch(logoutAction());
+  }
 }
