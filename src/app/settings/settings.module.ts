@@ -10,12 +10,13 @@ import {BackendErrorMessagesModule} from 'src/app/shared/modules/backendErrorMes
 const routes = [
   {
     path: 'settings',
-    component: SettingsComponent,
-  },
+    component: SettingsComponent
+  }
 ];
 
 @NgModule({
   imports: [CommonModule, RouterModule.forChild(routes), StoreModule.forFeature('settings', reducers), ReactiveFormsModule, BackendErrorMessagesModule],
-  declarations: [SettingsComponent],
+  declarations: [SettingsComponent]
 })
-export class SettingsModule {}
+export class SettingsModule {
+}
