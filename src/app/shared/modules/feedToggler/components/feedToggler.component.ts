@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
 import {select, Store} from '@ngrx/store';
-import {isLoggedInSelector} from '../../../../auth/store/selectors';
+import {isLoggedInSelector} from 'src/app/auth/store/selectors';
 
 @Component({
   selector: 'mc-feed-toggler',

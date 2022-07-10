@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
 import {CurrentUserInterface} from '../../../types/currentUser.interface';
 import {select, Store} from '@ngrx/store';
-import {currentUserSelector, isAnonymousSelector, isLoggedInSelector} from '../../../../auth/store/selectors';
+import {currentUserSelector, isAnonymousSelector, isLoggedInSelector} from 'src/app/auth/store/selectors';
 
 @Component({
   selector: 'mc-top-bar',

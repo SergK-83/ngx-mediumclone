@@ -5,6 +5,7 @@ import {ArticleInterface} from './article.interface';
 import {CreateArticleStateInterface} from 'src/app/createArticle/types/createArticleState.interface';
 import {EditArticleStateInterface} from 'src/app/editArticle/types/editArticleState.interface';
 import {SettingsStateInterface} from 'src/app/settings/types/settingsState.interface';
+import {UserProfileStateInterface} from 'src/app/userProfile/types/userProfileState.interface';
 
 // Данный интерфейс будет нам показывать все состояние приложения
 export interface AppStateInterface {
@@ -15,4 +16,5 @@ export interface AppStateInterface {
   createArticle: CreateArticleStateInterface;
   editArticle: EditArticleStateInterface;
   settings: SettingsStateInterface;
+  userProfile: UserProfileStateInterface;
 }

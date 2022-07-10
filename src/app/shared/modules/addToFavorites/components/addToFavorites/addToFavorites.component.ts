@@ -1,6 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Store} from '@ngrx/store';
+import {select, Store} from '@ngrx/store';
 import {addToFavoritesAction} from 'src/app/shared/modules/addToFavorites/store/actions/addToFavorites.action';
+import {Observable} from 'rxjs';
+import {isLoggedInSelector} from 'src/app/auth/store/selectors';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'mc-add-to-favorites',
@@ -13,16 +16,27 @@ export class AddToFavoritesComponent implements OnInit {
 
   favoritesCount: number;
   isFavorited: boolean;
+  isLogged: boolean | null;
 
-  constructor(private store: Store) {
+  constructor(private store: Store, private router: Router) {
   }
 
   ngOnInit(): void {
+    this.store.pipe(select(isLoggedInSelector)).subscribe(
+      (val) => {
+        this.isLogged = val;
+      }
+    );
     this.favoritesCount = this.favoritesCountProps;
     this.isFavorited = this.isFavoritedProps;
   }
 
   handleLike(): void {
+    if (!this.isLogged) {
+      this.router.navigateByUrl('/login');
+      return;
+    }
+
     this.store.dispatch(
       addToFavoritesAction({
         isFavorited: this.isFavorited,

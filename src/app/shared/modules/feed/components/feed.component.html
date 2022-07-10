@@ -8,7 +8,7 @@
         <img [src]="article.author.image" userAvatarDefault alt="">
       </a>
       <div class="info">
-        <a [routerLink]="['/profile', article.author.username]">
+        <a class='author' [routerLink]="['/profiles', article.author.username]">
           {{article.author.username}}
         </a>
         <span class="date">{{article.createdAt | date}}</span>
