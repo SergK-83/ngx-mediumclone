@@ -1,1 +1,56 @@
-User profile
+<div class='profile-page'
+     *ngIf='userProfile'>
+  <div class='user-info'>
+    <div class='container'>
+      <div class='row'>
+        <div class='col-xs-12 col-md-10 offset-md-1'>
+          <img [src]='userProfile.image'
+               alt='user-image'>
+          <h4>{{userProfile.username}}</h4>
+          <p>{{userProfile.bio}}</p>
+          <div>
+            FOLLOW USER BUTTON
+            <a
+              class='btn btn-sm btn-outline-secondary action-btn'
+              [routerLink]='["/settings"]'
+              *ngIf='isCurrentUserProfile$ | async'
+            >
+              Edit Profile Setting
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class='container'>
+    <div class='row'>
+      <div class='col-xs-12 col-md-10 offset-md-1'>
+        <div class='articles-toggle'>
+          <ul class='nav nav-pills outline-active'>
+            <li class='nav-item'>
+              <a
+                 class='nav-link'
+                 [routerLink]='["/profiles", userProfile.username]'
+                 routerLinkActive='active'
+                 [routerLinkActiveOptions]='{exact: true}'
+              >
+                My Posts
+              </a>
+            </li>
+            <li class='nav-item'>
+              <a
+                class='nav-link'
+                [routerLink]='["/profiles", userProfile.username, "favorites"]'
+                routerLinkActive='active'
+                [routerLinkActiveOptions]='{exact: true}'
+              >
+                Favorites Posts
+              </a>
+            </li>
+          </ul>
+        </div>
+        <mc-feed [apiUrl]='getApiUrl()'></mc-feed>
+      </div>
+    </div>
+  </div>
+</div>

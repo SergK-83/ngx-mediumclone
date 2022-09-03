@@ -9,9 +9,9 @@ import {
   errorSelector,
   isLoadingSelector,
 } from '../../store/selectors';
-import {currentUserSelector} from '../../../auth/store/selectors';
+import {currentUserSelector} from 'src/app/auth/store/selectors';
 import {map} from 'rxjs/operators';
-import {CurrentUserInterface} from '../../../shared/types/currentUser.interface';
+import {CurrentUserInterface} from 'src/app/shared/types/currentUser.interface';
 import {deleteArticleAction} from 'src/app/article/store/actions/deleteArticle.action ';
 
 @Component({
@@ -51,10 +51,10 @@ export class ArticleComponent implements OnInit, OnDestroy {
     this.slug = this.route.snapshot.paramMap.get('slug');
     this.isLoading$ = this.store.pipe(select(isLoadingSelector));
     this.error$ = this.store.pipe(select(errorSelector));
-    this.isAuthor$ = combineLatest(
+    this.isAuthor$ = combineLatest([
       this.store.pipe(select(articleSelector)),
       this.store.pipe(select(currentUserSelector))
-    ).pipe(
+    ]).pipe(
       map(
         ([article, currentUser]: [
           ArticleInterface | null,
